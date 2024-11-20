@@ -6,10 +6,10 @@
 #include <vector>
 using namespace std;
 
-void file::output(vector<string> x,vector<int> bets)
+void file::output(vector<string>& x,vector<int>& bets,ofstream& y)
 {
     for(size_t i = 0; i < x.size(); ++i)
-        cout << "Player: " << x[i] << ", Bet: " << bets[i] << endl;
+        cout << "Player: " << x[i] << ", Bet: $" << bets[i] << endl;
 }
 
 void file::ace(int count[], int &x, int user)
@@ -27,7 +27,7 @@ void file::readfile(ifstream &x, vector<string> &usernames, vector<int> &bets)
 
     while (x >> first >> last >> money)
     {
-        string name = first + last;
+        string name = first + " " + last;
         usernames.push_back(name);
         bets.push_back(money);
     }

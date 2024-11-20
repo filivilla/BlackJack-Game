@@ -1,6 +1,7 @@
 //Black Jack Game
 
 #include <iostream>//preprocessing directive for input and output
+#include <iomanip>//preprocessing directive for formatting 
 #include <ctime>//preporcessing directve for time usage
 #include <random>//preporcessing directive for random function
 #include <string>//preprocessing directive for string functions
@@ -12,8 +13,8 @@
 using namespace std;//name change for cin and cout
 
 struct deck{//struct deck to hold the suits 
-int x;
-
+int x;//declares x to be used as ace value 
+//**Creates the cards and array for the cards infinite cards */
 int Hearts[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, x}//heart suit
 ;int Spades[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, x}; //spades
 int Clubs[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, x};//clubs
@@ -40,9 +41,9 @@ int main()//header file for main function
         return 1;//terminates the program 
     }//end if 
 
-    object.readfile(players,usernames,bet);
+    object.readfile(players,usernames,bet);//function call for readfile
 
-    object.output(usernames,bet);
+    object.output(usernames,bet,leaderboard);//function call for file class
     
 
     return 0;//returns 0
