@@ -6,14 +6,21 @@
 #include <vector>
 using namespace std;
 
-void ace(int count[], int size, int& x,int user)
+void file::output(vector<string> x,vector<int> bets)
+{
+    for(size_t i = 0; i < x.size(); ++i)
+        cout << "Player: " << x[i] << ", Bet: " << bets[i] << endl;
+}
+
+void file::ace(int count[], int &x, int user)
 {
     if(count[user] + 11 > 21)
         x = 1;
     else
         x = 11;
 }
-void readfile(ifstream& x, vector<string>& usernames, vector<int>& bets)
+
+void file::readfile(ifstream &x, vector<string> &usernames, vector<int> &bets)
 {
     string name;
     int money;
@@ -23,10 +30,4 @@ void readfile(ifstream& x, vector<string>& usernames, vector<int>& bets)
         usernames.push_back(name);
         bets.push_back(money);
     }
-}
-
-void output(const vector<string>& x,const vector<int>& bets)
-{
-    for(size_t i = 0; i < x.size(); ++i)
-        cout << "Player: " << x[i] << ", Bet: " << bets[i] << endl;
 }
