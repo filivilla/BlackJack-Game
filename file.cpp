@@ -22,11 +22,12 @@ void file::ace(int count[], int &x, int user)
 
 void file::readfile(ifstream &x, vector<string> &usernames, vector<int> &bets)
 {
-    string name;
+    string first,last;
     int money;
 
-    while (x >> name >> money)
+    while (x >> first >> last >> money)
     {
+        string name = first + last;
         usernames.push_back(name);
         bets.push_back(money);
     }
