@@ -1,6 +1,7 @@
 //file.h
 
 #include <fstream>
+#include <vector>
 using namespace std;
 class file{
 public:
