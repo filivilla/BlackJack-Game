@@ -1,10 +1,10 @@
 //file.cpp
 
-#include"file.h"
-#include <iostream>
-#include<fstream>
-#include <vector>
-using namespace std;
+#include"file.h"//includes the file class
+#include <iostream>//preprocessing directive for input and output
+#include<fstream>//preprocessing directive for use of the file input and output
+#include <vector>//preprocessing directive to use vector function 
+using namespace std;//name change for cin and cout
 
 void file::output(vector<string>& x,vector<int>& bets,ofstream& y)
 {

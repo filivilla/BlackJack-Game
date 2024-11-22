@@ -32,7 +32,7 @@ int main()//header file for main function
 
     int num_players;//number of players,declared variable
     vector<int> bet;//declares a vector of integers for bet
-    vector<string> usernames;//declares a vector of string for usernames
+    vector<string> name;//declares a vector of string for usernames
     int dealer;//dealers score , variable declared
 
     if(!players)//checks if the file was opened or not
@@ -40,10 +40,11 @@ int main()//header file for main function
         cout << "File not found";
         return 1;//terminates the program 
     }//end if 
-
-    object.readfile(players,usernames,bet);//function call for readfile
-
-    object.output(usernames,bet,leaderboard);//function call for file class
+    //**function to input the name and bet to the names and bets vector */
+    object.readfile(players,name,bet);//function call for readfile
+    //**function to output the name and bet vectors to the terminal */
+    object.output(name,bet,leaderboard);//function call for file class
+    
     
 
     return 0;//returns 0
