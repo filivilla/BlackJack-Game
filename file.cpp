@@ -13,7 +13,7 @@ void file::output(vector<string> &x,vector<int> &bets,ofstream &y, vector<int> &
     for(size_t i = 0; i < x.size(); ++i)//for loops through the number of elements in the vector of names
     //which is the same size as the bets 
     //**size_t ensures that it can store the maximum number elemetns for array 
-        y << "Player: " << x[i] << ", Bet: $" << bets[i] << endl;
+        cout << "Player: " << x[i] << ", Bet: $" << bets[i] << endl;
         //outputs the elements i for the name and bets vector 
 }//end output
 
