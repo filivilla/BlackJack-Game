@@ -12,7 +12,7 @@ public://public member functions
         //then inputs that info into the vector for the player name and be also score
     void output(vector<string>& x,vector<int>& bets,ofstream& y, vector<int>& score);
         //ouput function outputs the infromatiinon in the vectors of the players name and bets and score
-    void input(vector<string>& x,vector<int>& bets,vector<int>& score, int numplayers);
+    void input(vector<string>& x,vector<int>& bets,vector<int>& score, int &numplayers);
         //gets the input from the diffrent players of their name,bet and score then inputs that into the vector
 
 };
