@@ -21,15 +21,15 @@ void file::output(vector<string> &x,vector<int> &bets,ofstream &y, vector<int> &
     }//end for 
     max_length += 15;//finds the length plus 15
 
-    cout << left << "Player" << setw(max_length) << right << "Bet" << endl;
+    cout << left << "Player" << setw(max_length) << right << setw(10) << "Bet" << endl;
 
     for(size_t i = 0; i < x.size(); ++i)
     //for loops through the number of elements in the vector of names
     //which is the same size as the bets 
     //**size_t ensures that it can store the maximum number elemetns for array 
-        cout << left << x[i] << setw(max_length) << right << "$:" << bets[i] << endl;
+        cout << left << setw(max_length) << x[i] << right << setw(10) << "$" << bets[i] << endl;
 
-}//end of displayScores function
+}//end of output function
 
 
 void file::ace(int &x, int dealer)
