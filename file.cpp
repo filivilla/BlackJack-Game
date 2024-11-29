@@ -6,12 +6,14 @@
 #include <vector>//preprocessing directive to use vector function 
 #include <cassert>//preprocessing directive for assert
 #include <iomanip>//preprocessind directive for formatting 
+#include <ctime>//preprocessing dricetive for time 
+#include<random>//preprocessing directive for random 
 using namespace std;//name change for cin and cout
 
 void file::output(vector<string> &x,vector<int> &bets,ofstream &y, vector<int> &score)
 {//void function defintion 
 //** vectors passed as string to keep memory short*/
-    int max_length = 0;
+    int max_length = 0;//assigsn max_length with zero 
 
     for(size_t r = 0; r < x.size(); ++r){//calculates the amount of space needed 
     //x.size() is datatype of size_t so makeing r the same data type
@@ -21,14 +23,15 @@ void file::output(vector<string> &x,vector<int> &bets,ofstream &y, vector<int> &
     }//end for 
     max_length += 15;//finds the length plus 15
 
-    cout << left << "Player" << setw(max_length) << right << setw(10) << "Bet" << endl;
+    y << left << setw(max_length) <<"Player"<< right << setw(10) << "Bet" << endl;
+    //inputs the header into the outfile 
 
     for(size_t i = 0; i < x.size(); ++i)
     //for loops through the number of elements in the vector of names
     //which is the same size as the bets 
     //**size_t ensures that it can store the maximum number elemetns for array 
-        cout << left << setw(max_length) << x[i] << right << setw(10) << "$" << bets[i] << endl;
-
+        y << left << setw(max_length) << x[i] << right << setw(10) << "$" << bets[i] << endl;
+        //inputs the leaderboard into write file 
 }//end of output function
 
 
@@ -82,8 +85,13 @@ void file::input(vector<string>& x,vector<int>& bets,vector<int>& score, int &nu
     }//end for
 }
 
-void file::start(vector<string> &name, vector<int> &bets, vector<int> &score, int &numplayers)
+void file::start(vector<string> &name, vector<int> &bets, vector<int> &score, int &numplayers,deck cards)
 {
+    srand(time(0));//seeds rand with time 0 at the start 
 
+    for(size_t i; i < name.size(); ++i)
+    {
+        
+    }
 }
 // end start

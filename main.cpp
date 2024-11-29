@@ -9,17 +9,9 @@
 #include"file.h"//access to class 
 #include <cassert>//preprocessing directive for usage of assert
 #include <vector>//preprocessing directive to include vector 
-
+#include"struct.h"//
 using namespace std;//name change for cin and cout
 
-struct deck{//struct deck to hold the suits 
-int x;//declares x to be used as ace value 
-//**Creates the cards and array for the cards infinite cards */
-int Hearts[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, x}//heart suit
-;int Spades[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, x}; //spades
-int Clubs[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, x};//clubs
-int Diamonds[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, x}; //diamons
-};
 
 int main()//header file for main function 
 {
@@ -28,7 +20,7 @@ int main()//header file for main function
     ifstream players("Players.txt");//reading file for other people playing 
     ofstream leaderboard("Leaderboard.out");//file for the outputed scoredbard
 
-    deck card;//struct object to be able to use the different sets 
+    deck;//struct object to be able to use the different sets 
 
     int num_players;//number of players,declared variable
     vector<int> score;//declares a vector of int for score 
