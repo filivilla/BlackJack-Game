@@ -5,18 +5,32 @@
 #include<fstream>//preprocessing directive for use of the file input and output
 #include <vector>//preprocessing directive to use vector function 
 #include <cassert>//preprocessing directive for assert
+#include <iomanip>//preprocessind directive for formatting 
 using namespace std;//name change for cin and cout
 
 void file::output(vector<string> &x,vector<int> &bets,ofstream &y, vector<int> &score)
 {//void function defintion 
 //** vectors passed as string to keep memory short*/
-    for(size_t i = 0; i < x.size(); ++i)//for loops through the number of elements in the vector of names
+    int max_length = 0;
+
+    for(size_t r = 0; r < x.size(); ++r){//calculates the amount of space needed 
+    //x.size() is datatype of size_t so makeing r the same data type
+    //must convert the vector to int to be able to compare the two values 
+        if(max_length < static_cast<int>(x[r].length()))//checks if max length is less than the length 
+            max_length = static_cast<int>(x[r].length());//changes max_length
+    }//end for 
+    max_length += 15;//finds the length plus 15
+
+    cout << left << "Player" << setw(max_length) << right << "Bet" << endl;
+
+    for(size_t i = 0; i < x.size(); ++i)
+    //for loops through the number of elements in the vector of names
     //which is the same size as the bets 
     //**size_t ensures that it can store the maximum number elemetns for array 
-        cout << "Player" << "          "  << "Bet" << endl
-            << x[i] << "          " << "$:" + bets[i] << endl;
-        //outputs the elements i for the name and bets vector 
-}//end output
+        cout << left << x[i] << setw(max_length) << right << "$:" << bets[i] << endl;
+
+}//end of displayScores function
+
 
 void file::ace(int &x, int dealer)
 {//void function definiton 
@@ -49,7 +63,7 @@ void file::input(vector<string>& x,vector<int>& bets,vector<int>& score, int &nu
     int bet;
 
     cout << "Enter number of players:";
-    cin >> num_players;
+    cin >> num_players;//enter number of players 
 
     for(int i = 0; i < num_players; i++)//popluations the vectors names,bets, and score
     {//for starts, continues until i is equal to numplayers then incriments
@@ -66,5 +80,10 @@ void file::input(vector<string>& x,vector<int>& bets,vector<int>& score, int &nu
         bets.push_back(bet);//inserts bet in the vector in the back
         score.push_back(0);//inserts 0 in the vector in the back
     }//end for
-}//end input
+}
 
+void file::start(vector<string> &name, vector<int> &bets, vector<int> &score, int &numplayers)
+{
+
+}
+// end start

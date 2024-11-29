@@ -14,5 +14,5 @@ public://public member functions
         //ouput function outputs the infromatiinon in the vectors of the players name and bets and score
     void input(vector<string>& x,vector<int>& bets,vector<int>& score, int &numplayers);
         //gets the input from the diffrent players of their name,bet and score then inputs that into the vector
-
+    void start(vector<string>& name,vector<int>& bets,vector<int>& score, int &numplayers);
 };
