@@ -8,6 +8,7 @@
 #include <iomanip>//preprocessind directive for formatting 
 #include <ctime>//preprocessing dricetive for time 
 #include<random>//preprocessing directive for random 
+#include"struct.h"//enable to use struct deck
 using namespace std;//name change for cin and cout
 
 void file::output(vector<string> &x,vector<int> &bets,ofstream &y, vector<int> &score)

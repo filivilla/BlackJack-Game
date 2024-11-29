@@ -20,7 +20,7 @@ int main()//header file for main function
     ifstream players("Players.txt");//reading file for other people playing 
     ofstream leaderboard("Leaderboard.out");//file for the outputed scoredbard
 
-    deck;//struct object to be able to use the different sets 
+    deck cards;//struct object to be able to use the different sets 
 
     int num_players;//number of players,declared variable
     vector<int> score;//declares a vector of int for score 
