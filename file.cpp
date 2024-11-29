@@ -53,6 +53,7 @@ void file::input(vector<string>& x,vector<int>& bets,vector<int>& score, int &nu
     for(int i = 0; i < num_players; i++)//popluations the vectors names,bets, and score
     {//for starts, continues until i is equal to numplayers then incriments
         cout << "Enter your name:"; 
+        cin >> name;
         getline(cin,name);//gets name 
         cout << "Enter your bet:";
         cin >> bet;//gets bet
