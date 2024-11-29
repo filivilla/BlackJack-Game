@@ -52,11 +52,15 @@ void file::input(vector<string>& x,vector<int>& bets,vector<int>& score, int &nu
 
     for(int i = 0; i < num_players; i++)//popluations the vectors names,bets, and score
     {//for starts, continues until i is equal to numplayers then incriments
-        cout << "Enter your name:"; 
-        getline(cin,name);//gets name 
+        
         cout << "Enter your bet:";
         cin >> bet;//gets bet
+        cin.ignore();//clears the buffer 
         assert(bet != 0 && "Bet must be greater than zero.");//assert checks if bet is not zero if true continues false terminates
+
+        cout << "Enter your name:"; 
+        getline(cin,name);//gets name 
+
         x.push_back(name);//inserts name in the vector in the back
         bets.push_back(bet);//inserts bet in the vector in the back
         score.push_back(0);//inserts 0 in the vector in the back
