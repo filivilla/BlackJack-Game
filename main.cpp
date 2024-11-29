@@ -45,7 +45,7 @@ int main()//header file for main function
     //**function to input the name and bet to the names and bets vector */
     object.readfile(players,name,bet,score);//function call for readfile
     object.input(name,bet,score,num_players);//function call for input, gets input from user and populates the vectors
-    
+
     
     //**function to output the name and bet vectors to the terminal */
     object.output(name,bet,leaderboard,score);//function call for file class
