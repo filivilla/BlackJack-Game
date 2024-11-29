@@ -13,17 +13,17 @@ void file::output(vector<string> &x,vector<int> &bets,ofstream &y, vector<int> &
     for(size_t i = 0; i < x.size(); ++i)//for loops through the number of elements in the vector of names
     //which is the same size as the bets 
     //**size_t ensures that it can store the maximum number elemetns for array 
-        cout << "Player: " << x[i] << ", Bet: $" << bets[i] << endl;
+        y << "Player: " << x[i] << ", Bet: $" << bets[i] << endl;
         //outputs the elements i for the name and bets vector 
 }//end output
 
 void file::ace(int &x, int dealer)
 {//void function definiton 
-    if(dealer + 11 > 21)
-        x = 1;
-    else
+    if(dealer + 11 > 21)//checks if dealer busts when ace is 11
+        x = 1;//assigns x wtih 1
+    else//if dealer does not bust then x is 11
         x = 11;
-}
+}//end ace
 
 void file::readfile(ifstream &x, vector<string> &usernames, vector<int> &bets, vector<int> &score)
 {//void function definiton 
