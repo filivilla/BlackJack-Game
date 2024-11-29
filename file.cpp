@@ -50,7 +50,7 @@ void file::input(vector<string>& x,vector<int>& bets,vector<int>& score, int &nu
     cout << "Enter number of players:";
     cin >> num_players;
 
-    for(int i = 0; i < numplayers; i++)//popluations the vectors names,bets, and score
+    for(int i = 0; i < num_players; i++)//popluations the vectors names,bets, and score
     {//for starts, continues until i is equal to numplayers then incriments
         cout << "Enter your name:"; 
         getline(cin,name);//gets name 
