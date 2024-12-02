@@ -90,8 +90,23 @@ void file::start(vector<string> &name, vector<int> &bets, vector<int> &score, in
 {
     srand(time(0));//seeds rand with time 0 at the start 
 
-    for(size_t i; i < name.size(); ++i)
+    for(size_t i = 0; i < name.size(); ++i)
     {
+        int random = rand() % (4 - 1 + 1) + 1;
+        switch (random)
+        {
+        case 1:
+            //do something
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        default:
+            break;
+        }
         
     }
 }
