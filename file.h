@@ -22,5 +22,4 @@ public://public member functions
         //sorts the vectors from highest score to lowest score 
     void dealer(int& dealer, deck card);
     //function to get the dealers hand 
-
 };

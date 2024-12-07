@@ -77,6 +77,7 @@ void file::input(vector<string>& x,vector<int>& bets,vector<int>& score, int &nu
         cin.ignore();//clears the buffer 
         cout << "Enter your name:"; 
         getline(cin,name);//gets name 
+        assert(!name.empty() && "Name cannot be empty");//checks if user entered name 
         x.push_back(name);//inserts name in the vector in the back
         bets.push_back(bet);//inserts bet in the vector in the back
         score.push_back(0);//inserts 0 in the vector in the back
@@ -85,43 +86,44 @@ void file::input(vector<string>& x,vector<int>& bets,vector<int>& score, int &nu
 
 void file::start(vector<string>& name,vector<int> &bets, vector<int> &score,deck cards,int &dealer)
 {
-    for(size_t i = 0; i < bets.size(); ++i)
+    for(size_t i = 0; i < bets.size(); ++i)//loops through all the players 
     {
-        bool HIT = true;
+        bool HIT = true;//declared and intialized variables
         int playerhand = 0;
         char choice;
-        cout << name[i] << "turn" << endl;
-        while(HIT)
+        cout << name[i] << "turn" << endl;//displayed the current players name 
+        while(HIT)//loops until the player stands 
         {
-            cout << "Current hand" << playerhand << endl;
+            cout << "Current hand" << playerhand << endl;//shows the players current hand 
             cout << "DO you want to Hit (H) or Stand (S)?";
-            cin >> choice;
-            if(toupper(choice) == 'S')
+            cin >> choice;//asks the player if they want to hit or stand 
+            assert((toupper(choice) == 'S' || toupper(choice) == 'H') && "Invalid input, please enter H or S");//error handling checks if user entered S or H 
+            if(toupper(choice) == 'S')//stops the loop if player wants to stand 
                 break;
-            int random = rand() % 13;
-            if(random == 12)
-                ace(playerhand);
-            else
+            int random = rand() % 13;//gets the first card
+            if(random == 12)//checks if its an ace 
+                ace(playerhand);//function call if ace
+            else//adds the card to players hand if its not an ace
                 playerhand += cards.Cards[random];
-            cout << "You drew the card, your new hand is " << playerhand << endl;
+            cout << "You drew a card, your new hand is " << playerhand << endl;
 
-            if (playerhand > 21 || playerhand <= dealer)
+            if (playerhand > 21 || playerhand <= dealer)//checks if the player busted or if they lost to the dealers hand 
             {
                 cout << "You lost"<< endl;
-                score[i] = 0;
+                score[i] = 0;//makes the bet and score 0 
                 bets[i] = 0;
-                HIT = false;
-            }
+                HIT = false;//then ends the loop 
+            }//end if 
             
-        }
+        }//end while 
         if(playerhand <= 21 && playerhand > dealer)
-        {
-            score[i] = playerhand;
-            bets[i] = bets[i] * 1.5;
-            cout << name[i] << "won" << bets[i] << endl;
-        }
+        {//checks player hand to make sure that they won 
+            score[i] = playerhand;//adds player hand to their score 
+            bets[i] = bets[i] * 1.5;//adds to their bet
+            cout << name[i] << "won" << bets[i] << endl;//then displays that they won 
+        }//end if 
         
-    }
+    }//end for 
 }
 // end start
 
@@ -158,14 +160,14 @@ void file::BubbleSort(vector<string>& name, vector<int>& bets, vector<int>& scor
             // If current score is smaller than the next score, swap the scores, bets, and names
             if (score[j] < score[j + 1]) {
                 // Swap scores
-                swap(score[j], score[j + 1]);
+                swap(score[j], score[j + 1]);//swap swaps the values of the two vecotrs 
                 
                 // Swap bets
-                swap(bets[j], bets[j + 1]);
+                swap(bets[j], bets[j + 1]);//swap function 
                 
                 // Swap names
-                swap(name[j], name[j + 1]);
-            }
-        }
-    }
-}
+                swap(name[j], name[j + 1]);//swap function 
+            }//end if 
+        }//end for
+    }//end for 
+}//end Bubblesort
