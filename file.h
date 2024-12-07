@@ -8,7 +8,7 @@ class file{//class defintion of file
 public://public member functions 
     void ace(int &dealer);//void function prototypes
         //ace function helps determine what value the ace should be then adds it to hand 
-    void readfile(ifstream& x, vector<string>& usernames, vector<int>& bets,vector<int>& score);
+    void readfile(int &dealer,deck card,ifstream& x, vector<string>& usernames, vector<int>& bets,vector<int>& score);
         //readfile function that gets the first name, last name, and the bet from the ifstream
         //then inputs that info into the vector for the player name and be also score
     void output(vector<string>& x,vector<int>& bets,ofstream& y, vector<int>& score);

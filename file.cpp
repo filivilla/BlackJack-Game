@@ -49,19 +49,47 @@ void file::ace(int &dealer)//changes the original hand
     dealer += x;//adds ace to hand 
 }//end ace
 
-void file::readfile(ifstream &x, vector<string> &usernames, vector<int> &bets, vector<int> &score)
-{//void function definiton 
+void file::readfile(int &dealer,deck card,ifstream &x, vector<string> &usernames, vector<int> &bets, vector<int> &score)
+{//void function definiton, gets info from file, the info has already been checked so no need for error handling
     string first,last;//declared variables 
     int money;
-    while (x >> first >> last >> money)
-    {//while continues when file has still information 
-        string name = first + " " + last;//intialized name with first and last
-        usernames.push_back(name);//inserts the new value to the end of the vector
-        assert(money != 0 && "Bet must be greater than zero");//assert if false terminate program if true continues 
-        bets.push_back(money);//inserts the new value at the end of the vector
-        score.push_back(0);//inserts 0 to match name and money position 
+    x >> first >> last >> money;
+    string name = first + " " + last;//intialized name with first and last
+    int hand;//random players hand from file 
+    hand = 0;//intializes dealer
+    while(hand < 17)//continues until dealer has 17 or more cards
+    {
+        int postion = rand() % 13;//draws the card
+        if(postion == 12)//checks for ace
+            ace(hand);//calls the function ace
+        else
+            hand += card.Cards[postion];//adds the card to the random players hand 
+        if(hand > 21)//checks if the player busted
+        {
+            cout << name << " busted"<<endl;
+            hand = 0;//sets the player to 0
+            money = 0;
+            break;//stops the while loop
+        }//end if
+    }//end while
+    if(hand >= 17 && hand <= 21)//checks to show random players hand to the players
+    {
+        cout << name << " stands with a hand of " << hand << endl;//outputs the score for random player
+        if(hand > dealer)//checks if they won 
+        {
+            cout << name << " won against the dealer." << endl;
+            money *= 1.5;
+        }//end if
+        else //if random player loses
+        {
+            cout << name << " lost to the dealer." << endl;
+            money = 0;//loses their money 
+        }//end else
+    }//end if
+    usernames.push_back(name);//inserts the new value to the end of the vector
+    bets.push_back(money);//inserts the new value at the end of the vector
+    score.push_back(hand);//inserts 0 to match name and money position 
     //**.push_back() inserts a value to the end of the vector */
-    }//end while 
 }//end readfile
 
 void file::input(vector<string>& x,vector<int>& bets,vector<int>& score, int &num_players)
@@ -118,13 +146,13 @@ void file::start(vector<string>& name,vector<int> &bets, vector<int> &score,deck
             }//end if 
             
         }//end while 
-        if(playerhand <= 21 && playerhand > dealer)
+        if(playerhand <= 21 && (playerhand > dealer || dealer > 21))
         {//checks player hand to make sure that they won 
             score[i] = playerhand;//adds player hand to their score 
             bets[i] = bets[i] * 1.5;//adds to their bet
             cout << name[i] << "won: $" << bets[i] << endl;//then displays that they won 
         }//end if 
-        else if (playerhand <= dealer)//checks if score is less than the dealer
+        else//checks if score is less than the dealer
         {
             cout << "You lost"<< endl;
             score[i] = 0;//makes the bet and score 0 
