@@ -101,13 +101,13 @@ void file::input(vector<string>& x,vector<int>& bets,vector<int>& score, int &nu
     assert(num_players > 0 && "There must be at least one player");
     for(int i = 0; i < num_players; i++)//popluations the vectors names,bets, and score
     {//for starts, continues until i is equal to numplayers then incriments
+        cin.ignore();//clears the buffer 
+        cout << "Player " << i+1 << " enter your name: "; 
+        getline(cin,name);//gets name 
+        assert(!name.empty() && "Name cannot be empty");//checks if user entered name 
         cout << "Enter your bet: $";
         cin >> bet;//gets bet
         assert(bet > 0 && "Bet must be greater than zero");//chekcs if bet is not 0 or negative 
-        cin.ignore();//clears the buffer 
-        cout << "Enter your name: "; 
-        getline(cin,name);//gets name 
-        assert(!name.empty() && "Name cannot be empty");//checks if user entered name 
         x.push_back(name);//inserts name in the vector in the back
         bets.push_back(bet);//inserts bet in the vector in the back
         score.push_back(0);//inserts 0 in the vector in the back
