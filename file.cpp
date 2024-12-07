@@ -66,16 +66,16 @@ void file::input(vector<string>& x,vector<int>& bets,vector<int>& score, int &nu
 {//void function definiton 
     string name;//declared variables 
     int bet;
-    cout << "Enter number of players:";
+    cout << "Enter number of players: ";
     cin >> num_players;//enter number of players 
     assert(num_players > 0 && "There must be at least one player");
     for(int i = 0; i < num_players; i++)//popluations the vectors names,bets, and score
     {//for starts, continues until i is equal to numplayers then incriments
-        cout << "Enter your bet:";
+        cout << "Enter your bet: $";
         cin >> bet;//gets bet
         assert(bet > 0 && "Bet must be greater than zero");//chekcs if bet is not 0 or negative 
         cin.ignore();//clears the buffer 
-        cout << "Enter your name:"; 
+        cout << "Enter your name: "; 
         getline(cin,name);//gets name 
         assert(!name.empty() && "Name cannot be empty");//checks if user entered name 
         x.push_back(name);//inserts name in the vector in the back
@@ -91,11 +91,11 @@ void file::start(vector<string>& name,vector<int> &bets, vector<int> &score,deck
         bool HIT = true;//declared and intialized variables
         int playerhand = 0;
         char choice;
-        cout << name[i] << "turn" << endl;//displayed the current players name 
+        cout << name[i] << "'s turn" << endl;//displayed the current players name 
         while(HIT)//loops until the player stands 
         {
-            cout << "Current hand" << playerhand << endl;//shows the players current hand 
-            cout << "DO you want to Hit (H) or Stand (S)?";
+            cout << "Current hand is " << playerhand << endl;//shows the players current hand 
+            cout << "DO you want to Hit (H) or Stand (S)? ";
             cin >> choice;//asks the player if they want to hit or stand 
             assert((toupper(choice) == 'S' || toupper(choice) == 'H') && "Invalid input, please enter H or S");//error handling checks if user entered S or H 
             if(toupper(choice) == 'S')//stops the loop if player wants to stand 
@@ -107,7 +107,7 @@ void file::start(vector<string>& name,vector<int> &bets, vector<int> &score,deck
                 playerhand += cards.Cards[random];
             cout << "You drew a card, your new hand is " << playerhand << endl;
 
-            if (playerhand > 21 || playerhand <= dealer)//checks if the player busted or if they lost to the dealers hand 
+            if (playerhand > 21)//checks if the player busted or if they lost to the dealers hand 
             {
                 cout << "You lost"<< endl;
                 score[i] = 0;//makes the bet and score 0 
@@ -122,7 +122,12 @@ void file::start(vector<string>& name,vector<int> &bets, vector<int> &score,deck
             bets[i] = bets[i] * 1.5;//adds to their bet
             cout << name[i] << "won" << bets[i] << endl;//then displays that they won 
         }//end if 
-        
+        else if (playerhand <= dealer)//checks if score is less than the dealer
+        {
+            cout << "You lost"<< endl;
+            score[i] = 0;//makes the bet and score 0 
+            bets[i] = 0;
+        }//end if 
     }//end for 
 }
 // end start
