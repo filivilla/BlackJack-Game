@@ -124,27 +124,25 @@ void file::start(vector<string>& name,vector<int> &bets, vector<int> &score,deck
         cout << name[i] << "'s turn" << endl;//displayed the current players name 
         while(HIT)//loops until the player stands 
         {
-            cout << "Current hand is " << playerhand << endl;//shows the players current hand 
-            cout << "DO you want to Hit (H) or Stand (S)? ";
-            cin >> choice;//asks the player if they want to hit or stand 
-            assert((toupper(choice) == 'S' || toupper(choice) == 'H') && "Invalid input, please enter H or S");//error handling checks if user entered S or H 
-            if(toupper(choice) == 'S')//stops the loop if player wants to stand 
-                break;
             int random = rand() % 13;//gets the first card
             if(random == 12)//checks if its an ace 
                 ace(playerhand);//function call if ace
             else//adds the card to players hand if its not an ace
                 playerhand += cards.Cards[random];
-            cout << "You drew a card, your new hand is " << playerhand << endl;
-
             if (playerhand > 21)//checks if the player busted or if they lost to the dealers hand 
             {
-                cout << "You lost"<< endl;
-                score[i] = 0;//makes the bet and score 0 
+                cout << name[i] <<  " busted"<< endl;
                 bets[i] = 0;
-                HIT = false;//then ends the loop 
+                break;//then ends the loop 
             }//end if 
             
+            cout << "Your hand is " << playerhand << endl;//if they did not bust adds to the hand and continues 
+
+            cout << "DO you want to Hit (H) or Stand (S)? ";
+            cin >> choice;//asks the player if they want to hit or stand 
+            assert((toupper(choice) == 'S' || toupper(choice) == 'H') && "Invalid input, please enter H or S");//error handling checks if user entered S or H 
+            if(toupper(choice) == 'S')//stops the loop if player wants to stand 
+                break;
         }//end while 
         if(playerhand <= 21 && (playerhand > dealer || dealer > 21))
         {//checks player hand to make sure that they won 
@@ -152,9 +150,9 @@ void file::start(vector<string>& name,vector<int> &bets, vector<int> &score,deck
             bets[i] = bets[i] * 1.5;//adds to their bet
             cout << name[i] << "won: $" << bets[i] << endl;//then displays that they won 
         }//end if 
-        else//checks if score is less than the dealer
+        else if(playerhand < dealer)//checks if score is less than the dealer
         {
-            cout << "You lost"<< endl;
+            cout << name[i] << " lost"<< endl;
             score[i] = 0;//makes the bet and score 0 
             bets[i] = 0;
         }//end if 
