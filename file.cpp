@@ -148,7 +148,7 @@ void file::start(vector<string>& name,vector<int> &bets, vector<int> &score,deck
         {//checks player hand to make sure that they won 
             score[i] = playerhand;//adds player hand to their score 
             bets[i] = bets[i] * 1.5;//adds to their bet
-            cout << name[i] << "won: $" << bets[i] << endl;//then displays that they won 
+            cout << name[i] << " won: $" << bets[i] << endl;//then displays that they won 
         }//end if 
         else if(playerhand < dealer)//checks if score is less than the dealer
         {
