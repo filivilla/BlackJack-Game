@@ -24,16 +24,18 @@ void file::output(vector<string> &x,vector<int> &bets,ofstream &y, vector<int> &
             max_length = static_cast<int>(x[r].length());//changes max_length
     }//end for 
     max_length += 15;//finds the length plus 15
-
+    cout << left << setw(max_length) <<"Player"<< right << setw(10) << "Bet" << endl;
     y << left << setw(max_length) <<"Player"<< right << setw(10) << "Bet" << endl;
     //inputs the header into the outfile 
 
-    for(size_t i = 0; i < x.size(); ++i)
+    for(size_t i = 0; i < x.size(); ++i){
     //for loops through the number of elements in the vector of names
     //which is the same size as the bets 
     //**size_t ensures that it can store the maximum number elemetns for array 
+        cout << left << setw(max_length) << x[i] << right << setw(10) << "$" << bets[i] << endl;//displays in terminal and file 
         y << left << setw(max_length) << x[i] << right << setw(10) << "$" << bets[i] << endl;
-        //inputs the leaderboard into write file 
+        //inputs the leaderboard into write file
+    }//end for 
 }//end of output function
 
 
@@ -120,7 +122,7 @@ void file::start(vector<string>& name,vector<int> &bets, vector<int> &score,deck
         {//checks player hand to make sure that they won 
             score[i] = playerhand;//adds player hand to their score 
             bets[i] = bets[i] * 1.5;//adds to their bet
-            cout << name[i] << "won" << bets[i] << endl;//then displays that they won 
+            cout << name[i] << "won: $" << bets[i] << endl;//then displays that they won 
         }//end if 
         else if (playerhand <= dealer)//checks if score is less than the dealer
         {
@@ -163,13 +165,10 @@ void file::BubbleSort(vector<string>& name, vector<int>& bets, vector<int>& scor
         // Last i elements are already in place
         for (int j = 0; j < n - i - 1; ++j) {
             // If current score is smaller than the next score, swap the scores, bets, and names
-            if (score[j] < score[j + 1]) {
-                // Swap scores
-                swap(score[j], score[j + 1]);//swap swaps the values of the two vecotrs 
-                
+            if (bets[j] < bets[j + 1]) {
                 // Swap bets
                 swap(bets[j], bets[j + 1]);//swap function 
-                
+                //swap swaps the values of the two vecotrs 
                 // Swap names
                 swap(name[j], name[j + 1]);//swap function 
             }//end if 
