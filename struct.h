@@ -1,15 +1,11 @@
 //struct.h
 
-#ifndef STRUCT_H
-#define STRUCT_H
+#ifndef STRUCT_H//checks if struct.h is defined
+#define STRUCT_H//definies struct
 
 struct deck{//struct deck to hold the suits 
 int x = 11;//declares x to be used as ace value 
 //**Creates the cards and array for the cards infinite cards */
-int Hearts[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, x}//heart suit
-;int Spades[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, x}; //spades
-int Clubs[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, x};//clubs
-int Diamonds[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, x}; //diamons
+int Cards[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, x};//cards no suits becauses its infinite 
 };
-
-#endif 
+#endif //ends sequence

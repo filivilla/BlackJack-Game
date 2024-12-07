@@ -1,5 +1,5 @@
 //Black Jack Game
-
+//main.cpp
 #include <iostream>//preprocessing directive for input and output
 #include <iomanip>//preprocessing directive for formatting 
 #include <ctime>//preporcessing directve for time usage
@@ -9,12 +9,13 @@
 #include"file.h"//access to class 
 #include <cassert>//preprocessing directive for usage of assert
 #include <vector>//preprocessing directive to include vector 
-#include"struct.h"//
+#include"struct.h"//allows the usage of the struct deck
 using namespace std;//name change for cin and cout
 
 
 int main()//header file for main function 
 {
+    srand(time(0));//seeds rand with time 0 at the start, in main which allows it be constnat for the functions 
     file object;//object for the class 
 
     ifstream players("Players.txt");//reading file for other people playing 
@@ -37,8 +38,9 @@ int main()//header file for main function
     //**function to input the name and bet to the names and bets vector */
     object.readfile(players,name,bet,score);//function call for readfile
     object.input(name,bet,score,num_players);//function call for input, gets input from user and populates the vectors
-
-    
+    object.dealer(dealer,cards);
+    object.start(name,bet,score,cards,dealer);
+    object.BubbleSort(name,bet,score);
     //**function to output the name and bet vectors to the terminal */
     object.output(name,bet,leaderboard,score);//function call for file class
     
