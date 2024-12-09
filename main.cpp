@@ -28,7 +28,7 @@ int main()//header file for main function
     vector<int> bet;//declares a vector of integers for bet
     vector<string> name;//declares a vector of string for usernames
     int dealer;//dealers score , variable declared
-
+    bool again = true;//play again 
     if(!players)//checks if the file was opened or not
     {
         cout << "File not found";
@@ -48,14 +48,31 @@ int main()//header file for main function
         return -1;//stops program 
     }//end else
     //**function to input the name and bet to the names and bets vector */
-    object.dealer(dealer,cards);//function call from class object
-    object.input(name,bet,score,num_players);//function call for input, gets input from user and populates the vectors
-    object.start(name,bet,score,cards,dealer);//function call to start the game and draw cards for players 
-    object.readfile(dealer,cards,players,name,bet,score);//function call for readfile
-    object.BubbleSort(name,bet,score);//function call to sort the vectors and prepare for outputting them 
-    //**function to output the name and bet vectors to the terminal */
-    object.output(name,bet,leaderboard,score);//function call for file class
-    
+    while (again)//continues until the player wants to end the game 
+    {
+        object.dealer(dealer,cards);//function call from class object
+        object.input(name,bet,score,num_players);//function call for input, gets input from user and populates the vectors
+        object.start(name,bet,score,cards,dealer);//function call to start the game and draw cards for players 
+        object.readfile(dealer,cards,players,name,bet,score);//function call for readfile
+        object.BubbleSort(name,bet,score);//function call to sort the vectors and prepare for outputting them 
+        //**function to output the name and bet vectors to the terminal */
+        object.output(name,bet,leaderboard,score);//function call for file class
+        cout << "Would you like to play again? Y/N" << endl;
+        cin >> choice;//gets choice whether to end the game 
+        choice = toupper(choice);//captilaize
+        //makes sure answer is valid 
+        assert((choice=='Y' || choice == 'N') && "Please enter a valid answer");
+        if(choice == 'N')//ends game 
+        {
+            again = false;
+            cout << "Ending game" << endl;
+        }//end if 
+        else{//resets the game and continues the while loop
+            cout << "Reseting for next game" << endl;
+            score.clear();
+            bet.clear();
+            name.clear();
+    }//end while 
     
 
     return 0;//returns 0
