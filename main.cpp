@@ -69,7 +69,9 @@ int main()//header file for main function
         }//end if 
         else{//resets the game and continues the while loop
             cout << "Reseting for next game" << endl;
-            score.clear();
+            players.clear();//fixes the file 
+            players.seekg(0, ios::beg);//moves the pointer to the beginning of the file to read from the start agains
+            score.clear();//clears the vectors of information to get new input 
             bet.clear();
             name.clear();
     }//end else
