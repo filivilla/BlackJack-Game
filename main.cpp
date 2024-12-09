@@ -72,8 +72,8 @@ int main()//header file for main function
             score.clear();
             bet.clear();
             name.clear();
+    }//end else
     }//end while 
-    
 
     return 0;//returns 0
 
