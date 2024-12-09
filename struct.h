@@ -1,5 +1,5 @@
 //struct.h
-
+//defintion for deck struct
 #ifndef STRUCT_H//checks if struct.h is defined
 #define STRUCT_H//definies struct
 

@@ -1,5 +1,5 @@
 //file.h
-
+//defintion for class
 #include <fstream>//preprocessing directive for file input and output
 #include <vector>//preproecessing directve for vector usage
 #include "struct.h"//includes the struct deck

@@ -1,5 +1,5 @@
 //file.cpp
-
+//definiton for function in class 
 #include"file.h"//includes the file class
 #include <iostream>//preprocessing directive for input and output
 #include<fstream>//preprocessing directive for use of the file input and output
