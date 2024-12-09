@@ -22,7 +22,7 @@ int main()//header file for main function
     ofstream leaderboard("Leaderboard.out");//file for the outputed scoredbard
 
     deck cards;//struct object to be able to use the different sets 
-
+    char choice;//choice on what game to play 
     int num_players;//number of players,declared variable
     vector<int> score;//declares a vector of int for score 
     vector<int> bet;//declares a vector of integers for bet
@@ -35,12 +35,24 @@ int main()//header file for main function
         return 1;//terminates the program 
     }//end if 
 
+    cout << "Welcome to Filiberto's casino! " << endl << "What game would you like to play:" << endl;
+    cout << "BlackJack(B), Slotes(S) or Roulette(R)?"<< endl;
+    cin >> choice;//asks the player for input to choose between three games 
+    choice = toupper(choice);//captilizes the choice
+    //if invalid input outputs message checks to make sure a valid answer was inputed
+    assert((choice == 'B' || choice == 'S' || choice == 'R') && "Please enter a valid option from those three");
+    if(choice == 'B')//if they picked blackjack
+        cout << "You chose BlackJack! Welcome" << endl;
+    else{//if they picked any other game 
+        cout << "Under maintance, come back later" << endl;
+        return -1;//stops program 
+    }//end else
     //**function to input the name and bet to the names and bets vector */
     object.dealer(dealer,cards);//function call from class object
     object.input(name,bet,score,num_players);//function call for input, gets input from user and populates the vectors
-    object.start(name,bet,score,cards,dealer);
+    object.start(name,bet,score,cards,dealer);//function call to start the game and draw cards for players 
     object.readfile(dealer,cards,players,name,bet,score);//function call for readfile
-    object.BubbleSort(name,bet,score);
+    object.BubbleSort(name,bet,score);//function call to sort the vectors and prepare for outputting them 
     //**function to output the name and bet vectors to the terminal */
     object.output(name,bet,leaderboard,score);//function call for file class
     
